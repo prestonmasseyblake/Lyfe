@@ -28,6 +28,7 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 import CurrentTime from './components/CurrentTime';
+import TasksContainer from './components/tasksbar/TasksContainer';
 
 const Section = ({children, title}): Node => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -51,29 +52,35 @@ const App: () => Node = () => {
   const isDarkMode = useColorScheme() === 'dark';
 
   const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
+    backgroundColor:'#25252A' 
+  };
+
+  const viewStyle = {
+    paddingBottom: 20,
+    backgroundColor: '#25252A',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    flexWrap: 'wrap',
+    alignItems: 'center',
   };
 
   return (
     <SafeAreaView style={backgroundStyle}>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-       
+      <View contentInsetAdjustmentBehavior="automatic" style={viewStyle}>
         <View
           style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section >
-           <CurrentTime/>
+            backgroundColor: isDarkMode ? '#25252A' : '#25252A',
+          }}
+        >
+          <Section>
+            <CurrentTime />
           </Section>
-        
-         
-         
-       
         </View>
-      </ScrollView>
+      </View>
+      <View style={styles.taskContainer}>
+        <TasksContainer />
+      </View>
     </SafeAreaView>
   );
 };
@@ -95,6 +102,10 @@ const styles = StyleSheet.create({
   highlight: {
     fontWeight: '700',
   },
+  taskContainer: {
+    // flex:1,
+    height:  154,
+  }
 });
 
 export default App;

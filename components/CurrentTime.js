@@ -31,13 +31,15 @@ function calculatePercentageOfDayDone() {
 
   function CurrentTime() {
       const [time, setTime] = useState(new Date().toLocaleTimeString());
-      const [percentageTime, setPercentageTime] = useState(0);
+      const [percentageTime, setPercentageTime] = useState(75);
 
       useEffect(() => {
-    setPercentageTime(calculatePercentageOfDayDone());
+        setPercentageTime(calculatePercentageOfDayDone());
+        console.log(percentageTime);
       const interval = setInterval(() => {
         setTime(new Date().toLocaleTimeString());
       }, 1000);
+        
         return () => clearInterval(interval);
         
        

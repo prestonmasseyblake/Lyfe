@@ -53,7 +53,7 @@ export default function Donut({
       strokeDashoffset,
     });
 
-    //     animation(percentage);
+    //   animation(percentage);
 
     //     animated.addListener(
     //   v => {
@@ -77,6 +77,7 @@ export default function Donut({
     // return () => {
     //   animated.removeAllListeners();
     // };
+      
   }, []);
 
     return (
