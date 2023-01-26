@@ -29,6 +29,7 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 import CurrentTime from './components/CurrentTime';
 import TasksContainer from './components/tasksbar/TasksContainer';
+import MenuContainer from './components/menugrid/menuContainer';
 
 const Section = ({children, title}): Node => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -80,6 +81,9 @@ const App: () => Node = () => {
       </View>
       <View style={styles.taskContainer}>
         <TasksContainer />
+      </View>
+      <View>
+        <MenuContainer/>
       </View>
     </SafeAreaView>
   );
