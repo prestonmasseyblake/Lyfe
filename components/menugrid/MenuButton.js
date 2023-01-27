@@ -1,13 +1,13 @@
 import React from 'react'
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
 
-const MenuButton = () => {
+const MenuButton = ({title,underText}) => {
     return (
-      <View>
+      <View style={styles.menuButtonContainer}>
         <TouchableOpacity style={styles.roundButton}>
-          <Text style={styles.buttonMainText}>Finances</Text>
+                <Text style={styles.buttonMainText}>{title}</Text>
         </TouchableOpacity>
-        <Text>This is a button</Text>
+            <Text style={styles.buttonUnderText}>{underText}</Text>
       </View>
     );
 }
@@ -15,6 +15,12 @@ const MenuButton = () => {
 export default MenuButton
 
 const styles = StyleSheet.create({
+    menuButtonContainer: {
+        width: "33%",
+        height: 100,
+        justifyContent: "center",
+        alignItems: "center",
+    },
     roundButton: {
         width: 60,
         height: 60,
@@ -27,5 +33,8 @@ const styles = StyleSheet.create({
     buttonMainText: {
         color: "#FFF",
         fontSize: 8
+    },
+    buttonUnderText: {
+        color: "#111"
     }
 })
