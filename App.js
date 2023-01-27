@@ -8,7 +8,9 @@
 
 import React from 'react';
 import type { Node } from 'react';
-import TimeCurrent from "./components/CurrentTime";
+import { NavigationContainer } from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+
 
 import {
   SafeAreaView,
@@ -27,27 +29,12 @@ import {
   LearnMoreLinks,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
-import CurrentTime from './components/CurrentTime';
-import TasksContainer from './components/tasksbar/TasksContainer';
-import MenuContainer from './components/menugrid/menuContainer';
 
-const Section = ({children, title}): Node => {
-  const isDarkMode = useColorScheme() === 'dark';
-  return (
-    <View style={styles.sectionContainer}>
-     
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
-  );
-};
+import Home from './pages/Home';
+import Finances from './pages/Finances';
+
+const Stack = createNativeStackNavigator();
+
 
 const App: () => Node = () => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -66,26 +53,19 @@ const App: () => Node = () => {
   };
 
   return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <View contentInsetAdjustmentBehavior="automatic" style={viewStyle}>
-        <View
-          style={{
-            backgroundColor: isDarkMode ? '#25252A' : '#25252A',
-          }}
-        >
-          <Section>
-            <CurrentTime />
-          </Section>
-        </View>
-      </View>
-      <View style={styles.taskContainer}>
-        <TasksContainer />
-      </View>
-      <View>
-        <MenuContainer/>
-      </View>
-    </SafeAreaView>
+    <NavigationContainer>
+      {/* <SafeAreaView style={backgroundStyle}> */}
+      {/* <Home/> */}
+      <Stack.Navigator>
+        <Stack.Screen
+          options={{headerShown: false}}
+          name="Home"
+          component={Home}
+        />
+        <Stack.Screen name="Finance" component={Finances} />
+      </Stack.Navigator>
+      {/* </SafeAreaView> */}
+    </NavigationContainer>
   );
 };
 

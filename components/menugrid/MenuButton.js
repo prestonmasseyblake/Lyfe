@@ -1,13 +1,17 @@
 import React from 'react'
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
-
+import { useNavigation } from '@react-navigation/native';
 const MenuButton = ({title,underText}) => {
+    const navigation = useNavigation(); 
     return (
       <View style={styles.menuButtonContainer}>
-        <TouchableOpacity style={styles.roundButton}>
-                <Text style={styles.buttonMainText}>{title}</Text>
+        <TouchableOpacity
+          onPress={() => navigation.navigate('Finance')}
+          style={styles.roundButton}
+        >
+          <Text style={styles.buttonMainText}>{title}</Text>
         </TouchableOpacity>
-            <Text style={styles.buttonUnderText}>{underText}</Text>
+        <Text style={styles.buttonUnderText}>{underText}</Text>
       </View>
     );
 }
@@ -35,6 +39,7 @@ const styles = StyleSheet.create({
         fontSize: 8
     },
     buttonUnderText: {
+        marginTop: 10,
         color: "#111"
     }
 })

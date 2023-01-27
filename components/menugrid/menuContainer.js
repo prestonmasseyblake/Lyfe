@@ -1,7 +1,7 @@
 import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import MenuButton from './MenuButton'
-const menuContainer = () => {
+const menuContainer = ({navigation}) => {
     return (
       <View style={styles.MainContainer}>
         <MenuButton title={'block'} underText={'block'} />
